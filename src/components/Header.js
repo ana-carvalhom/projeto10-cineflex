@@ -5,6 +5,7 @@ export default function Header(){
         <HeaderContainer>
             <h1>CINEFLEX</h1>
         </HeaderContainer>
+
         
     )
 }
