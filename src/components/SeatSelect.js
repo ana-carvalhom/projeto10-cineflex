@@ -3,7 +3,8 @@ import MovieHighlight from "./MovieHighlight";
 
 export default function SeatSelect(){
     return (
-<> <TitleContainer>
+<SeatSelectContent> 
+<TitleContainer>
             <h2>Selecione o(s) assento(s)</h2>
         </TitleContainer>
         <SeatsContainer>
@@ -78,7 +79,7 @@ export default function SeatSelect(){
             </Confirm>
             <MovieHighlight/>
           
-        </>
+        </SeatSelectContent>
     )
 }
 
@@ -88,7 +89,7 @@ height: 110px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100%;
+width: 100vw;
 margin-top: 67px;
 h2{
     font-family: 'Roboto', sans-serif;
@@ -97,11 +98,23 @@ h2{
 }
 }
 `
+const SeatSelectContent = styled.div`
+@media (max-width: 768px){
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100vw;
+}
+
+`
+
 const SeatsContainer = styled.div`
 @media (max-width: 768px){
 display: flex;
 padding: 30px;
 flex-wrap: wrap;
+width: 70%;
 p{
 display: flex;
 align-items: center;
@@ -131,6 +144,7 @@ const Options = styled.div`
 display: flex;
 box-sizing: border-box;
 padding: 10px;
+width: 100%;
 }
 
 `
@@ -206,3 +220,4 @@ color: white;
 
 }
 `
+

@@ -30,14 +30,14 @@ const MovieSelected = styled.div`
 background-color: #DFE6ED;
 border-top: 2px solid #9EADBA;
 width: 100vw;
-height: 117px;
+height: 200px;
 padding: 10px;
 display: flex;
 flex-wrap: wrap;
 align-items: center;
-position: absolute;
-border: 0;
-left: 0;
+margin-top: auto;
+border-top: 1px solid #9EADBA;
+box-sizing: border-box;
 
 
 }
