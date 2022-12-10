@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import harryPotter from "../assets/download.jpeg"
+import MovieHighlight from "./MovieHighlight";
 
 
 export default function MovieTime() {
@@ -31,15 +31,8 @@ export default function MovieTime() {
              
             </ButtonsContainer>
             </TimeContainer>
-            <MovieSelected>
-                <MovieCard>
-                <MovieImage src={harryPotter} alt="movie cover"/>
-                </MovieCard>
-                <p>Harry Potter</p>
-            </MovieSelected>
-
-
-        </>
+            <MovieHighlight/>
+</>
 
     )
 }
@@ -130,8 +123,6 @@ height: 117px;
 padding: 20px;
 display: flex;
 align-items: center;
-position: fixed;
-bottom: 0;
 p{
 font-family: 'Roboto';
 font-style: normal;

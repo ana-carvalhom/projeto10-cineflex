@@ -21,10 +21,13 @@ font-family: 'Roboto', sans-serif;
 position: fixed;
 top: 0;
 width: 100%;
+padding: 10px;
+box-sizing: border-box;
 h1{
     color:#E8833A;
     font-size: 34px;
     font-weight: 400;
+    text-align: center;
 }
   }
 
