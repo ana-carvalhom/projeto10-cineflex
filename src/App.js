@@ -1,13 +1,20 @@
 import Header from "./components/Header";
 import MovieCatalog from "./components/MovieCatalog";
+import MovieTime from "./components/MovieTime";
+import styled from "styled-components";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <Content>
       <Header/>
-      <MovieCatalog/>
-    </div>
+      <MovieTime/>
+    </Content>
   );
 }
 
-export default App;
+const Content = styled.div`
+@media (max-width: 768px){
+  height: 100vh;
+}
+
+`
