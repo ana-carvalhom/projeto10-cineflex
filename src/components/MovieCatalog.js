@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Movies from "./Movies";
-import axios from 'axios';
-
+import { useEffect, useState } from "react"
+import styled from "styled-components"
+import Movies from "./Movies"
+import axios from 'axios'
+import {Link} from "react-router-dom"
 
 
 export default function MovieCatalog() {
@@ -25,7 +25,10 @@ if (!movies){
         </TitleContainer>
         <MovieOptions>
             {movies.map(movie => (
-                <Movies key={movie.id} posterURL={movie.posterURL} />
+                <Link key={movie.id} to={`/sessoes/${movie.id}`}>
+                <Movies  posterURL={movie.posterURL} />
+                              
+                </Link>
             ))}
         </MovieOptions>
          
