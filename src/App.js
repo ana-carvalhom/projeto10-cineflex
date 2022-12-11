@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Content>
       <Header/>
-      <SeatSelect/>
+      <ConfirmationDetails/>
     </Content>
   );
 }
