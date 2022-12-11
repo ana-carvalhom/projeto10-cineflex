@@ -1,24 +1,32 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Movies from "./Movies";
+import axios from 'axios';
 
 
 
 export default function MovieCatalog() {
+const [movies, setMovies] = useState(undefined)
+
+
+useEffect(() => {
+    const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies")
+    promise.then(ans => setMovies(ans.data))
+    promise.catch(err => console.log(err.response.data))
+}, [])
+
+if (!movies){
+    return <TitleContainer>Carregando...</TitleContainer>
+} 
+
     return (
         <> <TitleContainer>
             <h2>Selecione o filme</h2>
         </TitleContainer>
         <MovieOptions>
-        <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
+            {movies.map(movie => (
+                <Movies key={movie.id} posterURL={movie.posterURL} />
+            ))}
         </MovieOptions>
          
            

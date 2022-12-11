@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import harryPotter from "../assets/download.jpeg"
 
 
-export default function Movies(){
+
+export default function Movies({posterURL}){
     return (
     <MovieContainer>
-        <MovieCover src={harryPotter} alt=""/>
+        <MovieCover src={posterURL} alt="movie poster"/>
         </MovieContainer>
     )
 }
