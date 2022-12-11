@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export default function ConfirmationDetails(){
     return(
-        <>
+        <ConfirmationScreen>
         <ConfirmationMessage>
             <h2>Pedido feito com sucesso!</h2>
         </ConfirmationMessage>
@@ -21,9 +21,23 @@ export default function ConfirmationDetails(){
         <p>Nome: João da Silva Sauro</p>
         <p>CPF: 111.111.111.-11</p>
         </TicketDetails>
-        </>
+        <Back>
+            <button>Voltar para a home</button>
+            </Back>
+        </ConfirmationScreen>
     )
 }
+
+const ConfirmationScreen = styled.div`
+@media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    
+}
+
+`
 
 const ConfirmationMessage = styled.div`
 @media (max-width: 768px){
@@ -31,7 +45,6 @@ height: 110px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100%;
 margin-top: 67px;
 h2{
     font-family: 'Roboto';
@@ -48,7 +61,7 @@ const TicketDetails = styled.div`
 @media (max-width: 768px){
 color: #293845;
 font-family: 'Roboto';
-background-color: red;
+margin-bottom: 40px;
 h3{
 font-weight: 700;
 font-size: 24px;
@@ -59,5 +72,28 @@ font-weight: 400;
 font-size: 22px;
 line-height: 26px;
 }
+}
+`
+
+const Back = styled.div`
+@media (max-width: 768px){
+display: flex;
+justify-content: center ;
+margin: 40px;
+margin-bottom: 100px;
+button{
+width: 225px;
+height: 42px;
+background: #E8833A;
+border-radius: 3px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+color: white;
+
+}
+
 }
 `

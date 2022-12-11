@@ -19,7 +19,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 400px;
+  max-width: fit-content;
 
 }
 

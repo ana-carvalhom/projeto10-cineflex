@@ -20,7 +20,7 @@ background-color: #C3CFD9;
 font-family: 'Roboto', sans-serif;
 position: fixed;
 top: 0;
-width: 100%;
+width: 100vw;
 padding: 10px;
 box-sizing: border-box;
 h1{
