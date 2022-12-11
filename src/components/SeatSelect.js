@@ -89,7 +89,7 @@ height: 110px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100vw;
+width: 100%;
 margin-top: 67px;
 h2{
     font-family: 'Roboto', sans-serif;
@@ -104,7 +104,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-width: 100vw;
 }
 
 `

@@ -29,7 +29,7 @@ const MovieSelected = styled.div`
 @media (max-width: 768px){
 background-color: #DFE6ED;
 border-top: 2px solid #9EADBA;
-width: 100vw;
+width: 100%;
 height: 200px;
 padding: 10px;
 display: flex;

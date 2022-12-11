@@ -3,6 +3,7 @@ import MovieCatalog from "./components/MovieCatalog";
 import MovieTime from "./components/MovieTime";
 import styled from "styled-components";
 import SeatSelect from "./components/SeatSelect";
+import ConfirmationDetails from "./components/ConfirmationDetails";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 400px;
 
 }
 
