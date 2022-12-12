@@ -1,16 +1,15 @@
 import styled from "styled-components"
-import harryPotter from "../assets/download.jpeg"
 
 
-export default function MovieHighlight(){
+export default function MovieHighlight({movieCover, movieTitle, movieDay, movieHour}){
     return(
         <MovieSelected>
                 <MovieCard>
-                <MovieImage src={harryPotter} alt="movie cover"/>
+                <MovieImage src={movieCover} alt="movie cover"/>
                 </MovieCard>
                 <MovieSelectedInfo>
-                <p>Harry Potter</p>
-                <p>Quinta-feira - 15:00</p>
+                <p>{movieTitle}</p>
+                {movieDay && movieHour && <p>{movieDay} - {movieHour}</p>}
                 </MovieSelectedInfo>
                 
             </MovieSelected>

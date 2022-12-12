@@ -1,37 +1,38 @@
 import styled from "styled-components";
 import MovieHighlight from "./MovieHighlight";
+import MovieDays from "./MovieDays";
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+import axios from "axios"
 
 
 export default function MovieTime() {
+    const {idFilme} = useParams()
+    const [movieInfo, setMovieInfo] = useState(undefined)
+
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`)
+        promise.then(ans => setMovieInfo(ans.data))
+        promise.catch(err => console.log(err.response.data))
+    }, [])
+
+    if (!movieInfo) {
+        return <TitleContainer>Carregando...</TitleContainer>
+    }
+    console.log(movieInfo)
     return (
         <> <TitleContainer>
             <h2>Selecione o horário</h2>
         </TitleContainer>
-            <TimeContainer>
-                <p>Quinta-feira - 24/06/2021</p>
-                <ButtonsContainer> 
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             
-            </ButtonsContainer>
-            </TimeContainer>
-            <TimeContainer>
-                <p>Sexta-feira - 25/06/2021</p>
-                <ButtonsContainer> 
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             <button>15:00</button>
-             
-            </ButtonsContainer>
-            </TimeContainer>
-            <MovieHighlight/>
+        {movieInfo.days.map( m =>
+                (
+                   <MovieDays movie={m}/>
+                    
+                )      
+                )}
+            
+           
+            <MovieHighlight movieCover={movieInfo.posterURL} movieTitle={movieInfo.title}/>
 </>
 
     )
@@ -51,55 +52,4 @@ h2{
     color: #293845;
 }
 }
-`
-
-const TimeContainer = styled.div`
-@media (max-width: 768px){
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0 20px;
-p{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 21px;
-color: #293845;
-}
-
-}
-
-`
-
-const ButtonsContainer = styled.div`
-@media (max-width: 768px){
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-margin: 20px 0;
-
-button {
-width: 83px;
-height: 43px;
-background-color: #E8833A;
-border-radius: 3px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 21px;
-color: #FFFFFF;
-margin-right: 20px;
-margin-bottom: 20px;
-
-
-}
-}
-
-
-
 `
