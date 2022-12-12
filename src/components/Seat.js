@@ -1,9 +1,19 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-export default function Seat({seat,selectSeat,  }){
+export default function Seat({seat,selectSeat,isSelected  }){
     const [status, setStatus] = useState("available")
+
+    useEffect(() => {
+        if (isSelected){
+            setStatus("selected")
+        } else if (seat.isAvailable) {
+            setStatus("available")
+        } else {
+            setStatus("unavailable")
+        }
+    }, [isSelected]) 
     
 
 
