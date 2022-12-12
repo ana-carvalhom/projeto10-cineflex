@@ -5,11 +5,23 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import OptionsDescription from "./OptionsDescription";
 import ClientInformationForm from "./ClientInformationForm";
+import Seat from "./Seat";
+
+
+
+
+const seatColors = {
+    available: { background: "#C3CFD9", border: "#808F9D" },
+    selected: { background: "#1AAE9E", border: "#0E7D71" },
+    unavailable: { background: "#FBE192", border: "#F7C52B" }
+}
 
 export default function SeatSelect(){
+  
 
     const {idSessao} = useParams()
     const [movieSession, setMovieSession] = useState(undefined)
+    const [seatSelected, setSeatSelected] = useState([])
 
     useEffect(() => {
     
@@ -20,12 +32,35 @@ export default function SeatSelect(){
     }, [])
 
     console.log(movieSession)
+    
+   
+
+    function selectSeat(seat){
+
+        
+
+        if(seat.isAvailable === false){
+            alert("Esse assento não está disponível")
+        } else {
+            const isSelected = seatSelected.some(s => seat.id === s.id )
+            if (isSelected){
+                const goBack = seatSelected.filter(s => seat.id !== s.id)
+                setSeatSelected(goBack)
+
+            } else {
+                setSeatSelected([...seatSelected,seat])
+            }
+            
+        }
+        
+    }
+    console.log(seatSelected)
 
     if(!movieSession){
         return <TitleContainer>Carregando...</TitleContainer>
     }
 
-
+//parei aqui - vou precisar transformar o P num componente separado//
     return (
 <SeatSelectContent> 
 <TitleContainer>
@@ -33,7 +68,12 @@ export default function SeatSelect(){
         </TitleContainer>
         <SeatsContainer>
             {movieSession.seats.map(seat => (
-            <p key={seat.name}>{seat.name}</p>
+            <Seat 
+            key={seat.name}
+            seat={seat} 
+            selectSeat={selectSeat}
+            isSelected={seatSelected.some(s => seat.id === s.id )}
+           />
             ))
             
             }
@@ -55,6 +95,8 @@ export default function SeatSelect(){
         </SeatSelectContent>
     )
 }
+
+
 
 const TitleContainer = styled.div`
 @media (max-width: 768px){
@@ -87,27 +129,6 @@ display: flex;
 padding: 30px;
 flex-wrap: wrap;
 width: 70%;
-p{
-display: flex;
-align-items: center;
-justify-content: center;
-width: 26px;
-height: 26px;
-background: #C3CFD9;
-border: 1px solid #808F9D;
-border-radius: 12px;
-padding: 8px;
-box-sizing: border-box;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 11px;
-line-height: 13px;
-margin-left: 13px;
-margin-bottom: 5px;
-
-
-}
 }
 `
 
