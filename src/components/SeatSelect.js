@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios"
 import OptionsDescription from "./OptionsDescription";
+import ClientInformationForm from "./ClientInformationForm";
 
 export default function SeatSelect(){
 
@@ -32,22 +33,13 @@ export default function SeatSelect(){
         </TitleContainer>
         <SeatsContainer>
             {movieSession.seats.map(seat => (
-            <p>{seat.name}</p>
+            <p key={seat.name}>{seat.name}</p>
             ))
             
             }
         </SeatsContainer>
         <OptionsDescription/>
-        <Client>
-            <ClientInfo>
-                <p>Nome do Comprador:</p>
-                <input placeholder="Digite seu nome..."/>
-            </ClientInfo>
-            <ClientInfo>
-                <p>CPF do Comprador:</p>
-                <input placeholder="Digite seu cpf..."/>
-            </ClientInfo>
-        </Client>
+        <ClientInformationForm/>
         
         <Confirm>
             <button>Reservar assento(s)</button>
@@ -121,34 +113,7 @@ margin-bottom: 5px;
 
 
 
-const Client = styled.div`
-@media (max-width: 768px){
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 40px;
-p{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 21px;
-}
-input{
-width: 327px;
-height: 51px;
-background: #FFFFFF;
-border: 1px solid #D5D5D5;
-border-radius: 3px;
-margin-bottom: 20px;
-padding: 3px;
-box-sizing: border-box;
-}
-}
-`
-const ClientInfo = styled.div`
-@media (max-width: 768px){}
-`
+
 
 const Confirm = styled.div`
 @media (max-width: 768px){
