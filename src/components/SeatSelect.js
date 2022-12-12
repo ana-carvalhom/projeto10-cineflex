@@ -3,6 +3,7 @@ import MovieHighlight from "./MovieHighlight";
 import {useParams} from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios"
+import OptionsDescription from "./OptionsDescription";
 
 export default function SeatSelect(){
 
@@ -36,20 +37,7 @@ export default function SeatSelect(){
             
             }
         </SeatsContainer>
-        <Options>
-            <OptionDetailed>
-                <Option/>
-            Selecionado
-            </OptionDetailed>
-            <OptionDetailed>
-                <Option/>
-            Disponível
-            </OptionDetailed>
-            <OptionDetailed>
-                <Option/>
-            Indisponível
-            </OptionDetailed>
-        </Options>
+        <OptionsDescription/>
         <Client>
             <ClientInfo>
                 <p>Nome do Comprador:</p>
@@ -131,36 +119,7 @@ margin-bottom: 5px;
 }
 `
 
-const Options = styled.div`
-@media (max-width: 768px){
-display: flex;
-box-sizing: border-box;
-padding: 10px;
-width: 100%;
-}
 
-`
-const OptionDetailed = styled.div`
-@media (max-width: 768px){
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-left: 35px;
-}
-
-`
-const Option = styled.div`
-@media (max-width: 768px){
-width: 25px;
-height: 25px;
-background: #1AAE9E;
-border: 1px solid #0E7D71;
-border-radius: 17px;
-margin-bottom: 5px;
-    
-}
-
-`
 
 const Client = styled.div`
 @media (max-width: 768px){
