@@ -1,53 +1,40 @@
 import styled from "styled-components";
 import MovieHighlight from "./MovieHighlight";
+import {useParams} from "react-router-dom"
+import { useEffect, useState } from "react";
+import axios from "axios"
 
 export default function SeatSelect(){
+
+    const {idSessao} = useParams()
+    const [movieSession, setMovieSession] = useState(undefined)
+
+    useEffect(() => {
+    
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
+        promise.then(ans => setMovieSession(ans.data))
+        promise.catch(err => console.log(err.response.data))
+
+    }, [])
+
+    console.log(movieSession)
+
+    if(!movieSession){
+        return <TitleContainer>Carregando...</TitleContainer>
+    }
+
+
     return (
 <SeatSelectContent> 
 <TitleContainer>
             <h2>Selecione o(s) assento(s)</h2>
         </TitleContainer>
         <SeatsContainer>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
-            <p>01</p>
+            {movieSession.seats.map(seat => (
+            <p>{seat.name}</p>
+            ))
+            
+            }
         </SeatsContainer>
         <Options>
             <OptionDetailed>
@@ -77,7 +64,13 @@ export default function SeatSelect(){
         <Confirm>
             <button>Reservar assento(s)</button>
             </Confirm>
-            <MovieHighlight/>
+            <MovieHighlight
+            movieCover={movieSession.movie.posterURL}
+            movieTitle={movieSession.movie.title}
+            movieDay={movieSession.day.weekday}
+            movieHour={movieSession.name}
+            
+            />
           
         </SeatSelectContent>
     )
