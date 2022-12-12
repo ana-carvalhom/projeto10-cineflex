@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import {Link} from "react-router-dom"
 
 
 export default function MovieDays({movie}){
@@ -7,7 +8,10 @@ return (
     <p>{movie.weekday} - {movie.date}</p>
        <ButtonsContainer> 
          {movie.showtimes.map((time) =>
-         <button key={time.name}>{time.name}</button>
+         <Link key={time.name} to={`/assentos/${time.id}`}>
+         <button>{time.name}</button>
+         </Link>
+         
                  
          )}
     

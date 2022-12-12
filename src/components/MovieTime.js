@@ -26,7 +26,7 @@ export default function MovieTime() {
         </TitleContainer>
         {movieInfo.days.map( m =>
                 (
-                   <MovieDays movie={m}/>
+                   <MovieDays key={m.id} movie={m}/>
                     
                 )      
                 )}
