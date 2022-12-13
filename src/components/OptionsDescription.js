@@ -4,15 +4,15 @@ export default function OptionsDescription(){
     return(
         <Options>
         <OptionDetailed>
-            <Option/>
+            <OptionSelected/>
         Selecionado
         </OptionDetailed>
         <OptionDetailed>
-            <Option/>
+            <OptionAvailable/>
         Disponível
         </OptionDetailed>
         <OptionDetailed>
-            <Option/>
+            <OptionUnavailable/>
         Indisponível
         </OptionDetailed>
     </Options>
@@ -25,6 +25,7 @@ display: flex;
 box-sizing: border-box;
 padding: 10px;
 width: 100%;
+
 }
 
 `
@@ -37,7 +38,7 @@ margin-left: 35px;
 }
 
 `
-const Option = styled.div`
+const OptionSelected = styled.div`
 @media (max-width: 768px){
 width: 25px;
 height: 25px;
@@ -46,6 +47,28 @@ border: 1px solid #0E7D71;
 border-radius: 17px;
 margin-bottom: 5px;
     
+}
+
+`
+const OptionAvailable = styled.div`
+@media (max-width: 768px){
+width: 25px;
+height: 25px;
+border-radius: 17px;
+margin-bottom: 5px;
+background: #C3CFD9;
+border: 1px solid #7B8B99;    
+}
+
+`
+const OptionUnavailable = styled.div`
+@media (max-width: 768px){
+width: 25px;
+height: 25px;
+border-radius: 17px;
+margin-bottom: 5px;
+background: #FBE192;
+border: 1px solid #F7C52B;    
 }
 
 `
