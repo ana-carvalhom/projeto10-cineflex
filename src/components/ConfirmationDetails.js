@@ -1,30 +1,31 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-export default function ConfirmationDetails(ticketConfirmation){
+export default function ConfirmationDetails({ticketConfirmation}){
     const {movie, date, time, client, cpf, seats} = ticketConfirmation
     return(
         <ConfirmationScreen>
         <ConfirmationMessage>
             <h2>Pedido feito com sucesso!</h2>
         </ConfirmationMessage>
-        <TicketDetails>
+        <TicketDetails data-test="movie-info" >
         <h3>Filme e sessão</h3>
         <p>{movie}</p>
         <p>{date} - {time}</p>
         </TicketDetails>
-        <TicketDetails>
+        <TicketDetails data-test="seats-info" >
         <h3>Ingressos</h3>
         {seats.map(seat => <p key={seat}>Assento {seat}</p>)}
         
         </TicketDetails>
-        <TicketDetails>
+        <TicketDetails data-test="client-info">
         <h3>Comprador</h3>
         <p>Nome: {client}</p>
         <p>CPF: {cpf}</p>
         </TicketDetails>
         <Link to="/">
         <Back>
-            <button>Voltar para a home</button>
+            <button data-test="go-home-btn">Voltar para a home</button>
             </Back>
         </Link>
         

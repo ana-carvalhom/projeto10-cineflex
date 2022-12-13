@@ -52,7 +52,7 @@ export default function ClientInformationForm({seatSelected, setTicketConfirmati
                 placeholder="Digite seu nome..."
                 value={clientName.name}
                 onChange={formInformation}
-                />
+                data-test="client-name"/>
             </ClientInfo>
             <ClientInfo>
                 <p>CPF do Comprador:</p>
@@ -62,10 +62,10 @@ export default function ClientInformationForm({seatSelected, setTicketConfirmati
                 placeholder="Digite seu cpf..."
                 value={clientName.cpf}
                 onChange={formInformation}
-                />
+                data-test="client-cpf"/>
             </ClientInfo>
             <Confirm>
-            <button type="submit">Reservar assento(s)</button>
+            <button type="submit" data-test="book-seat-btn">Reservar assento(s)</button>
             </Confirm>
         </Client>
     )

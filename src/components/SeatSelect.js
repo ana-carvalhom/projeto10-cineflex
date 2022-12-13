@@ -89,7 +89,7 @@ export default function SeatSelect({setTicketConfirmation}){
             movieTitle={movieSession.movie.title}
             movieDay={movieSession.day.weekday}
             movieHour={movieSession.name}
-            
+            data-test="footer"
             />
           
         </SeatSelectContent>

@@ -32,7 +32,7 @@ export default function MovieTime() {
                 )}
             
            
-            <MovieHighlight movieCover={movieInfo.posterURL} movieTitle={movieInfo.title}/>
+            <MovieHighlight movieCover={movieInfo.posterURL} movieTitle={movieInfo.title} data-test="footer"/>
 </>
 
     )

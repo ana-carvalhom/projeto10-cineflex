@@ -4,9 +4,9 @@ import {Link} from "react-router-dom"
 
 export default function MovieDays({movie}){
 return (
-    <TimeContainer>
+    <TimeContainer data-test="movie-day">
     <p>{movie.weekday} - {movie.date}</p>
-       <ButtonsContainer> 
+       <ButtonsContainer data-test="showtime"> 
          {movie.showtimes.map((time) =>
          <Link key={time.name} to={`/assentos/${time.id}`}>
          <button>{time.name}</button>
