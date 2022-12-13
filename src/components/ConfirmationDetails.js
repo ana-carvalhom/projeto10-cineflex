@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-export default function ConfirmationDetails(){
+export default function ConfirmationDetails(ticketConfirmation){
+    const {movie, date, time, client, cpf, seats} = ticketConfirmation
     return(
         <ConfirmationScreen>
         <ConfirmationMessage>
@@ -8,22 +9,25 @@ export default function ConfirmationDetails(){
         </ConfirmationMessage>
         <TicketDetails>
         <h3>Filme e sessão</h3>
-        <p>Enola Holmes</p>
-        <p>24/06/2021 15:00</p>
+        <p>{movie}</p>
+        <p>{date} - {time}</p>
         </TicketDetails>
         <TicketDetails>
         <h3>Ingressos</h3>
-        <p>Assento 15</p>
-        <p>Assento 16</p>
+        {seats.map(seat => <p key={seat}>Assento {seat}</p>)}
+        
         </TicketDetails>
         <TicketDetails>
         <h3>Comprador</h3>
-        <p>Nome: João da Silva Sauro</p>
-        <p>CPF: 111.111.111.-11</p>
+        <p>Nome: {client}</p>
+        <p>CPF: {cpf}</p>
         </TicketDetails>
+        <Link to="/">
         <Back>
             <button>Voltar para a home</button>
             </Back>
+        </Link>
+        
         </ConfirmationScreen>
     )
 }

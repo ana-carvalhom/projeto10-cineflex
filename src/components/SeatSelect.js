@@ -16,7 +16,7 @@ const seatColors = {
     unavailable: { background: "#FBE192", border: "#F7C52B" }
 }
 
-export default function SeatSelect(){
+export default function SeatSelect({setTicketConfirmation}){
   
 
     const {idSessao} = useParams()
@@ -79,7 +79,9 @@ export default function SeatSelect(){
         </SeatsContainer>
         <OptionsDescription/>
         <ClientInformationForm
-        seatSelected={seatSelected}/>
+        seatSelected={seatSelected}
+        setTicketConfirmation={setTicketConfirmation}
+        movieSession={movieSession}/>
         
         
             <MovieHighlight

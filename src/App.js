@@ -6,8 +6,11 @@ import SeatSelect from "./components/SeatSelect";
 import ConfirmationDetails from "./components/ConfirmationDetails";
 import GlobalStyle from "./css/GlobalStyle";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { useState } from "react";
 
 export default function App() {
+  const [ticketConfirmation, setTicketConfirmation] = useState({})
+
   return (
     <BrowserRouter>
     <GlobalStyle />
@@ -16,8 +19,8 @@ export default function App() {
       <Routes>
       <Route path="/" element={<MovieCatalog/>}/>
       <Route path="/sessoes/:idFilme" element={<MovieTime/>}/>
-      <Route path="/assentos/:idSessao" element={<SeatSelect/>}/>
-      <Route path="/sucesso" element={<ConfirmationDetails/>}/>
+      <Route path="/assentos/:idSessao" element={<SeatSelect setTicketConfirmation={setTicketConfirmation}/>}/>
+      <Route path="/sucesso" element={<ConfirmationDetails ticketConfirmation={ticketConfirmation}/>}/>
       
       </Routes>
       

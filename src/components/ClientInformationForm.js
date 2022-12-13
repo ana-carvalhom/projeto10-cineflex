@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function ClientInformationForm({seatSelected}){
+export default function ClientInformationForm({seatSelected, setTicketConfirmation, movieSession}){
     const [clientName, setClientName] = useState({name:"", cpf: ""})
     const navigate = useNavigate()
 
@@ -22,10 +22,25 @@ export default function ClientInformationForm({seatSelected}){
         
             console.log(body)
 
+
+            const purchaseInfo = {
+                movie: movieSession.movie.title,
+                date: movieSession.day.date,
+                seats:seatSelected.map(seat => seat.name),
+                time: movieSession.name,
+                client:clientName.name,
+                cpf: clientName.cpf,
+
+            }
+
            const promise =  axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", body)
-           promise.then(ans => {navigate("/sucesso")})
+           promise.then(ans => 
+            {navigate("/sucesso")
+            setTicketConfirmation(purchaseInfo)
+            })
            promise.catch(err => alert(err.response.data))
     }
+
 
     return(
         <Client onSubmit={ticketPurchase}>
