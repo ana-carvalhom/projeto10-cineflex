@@ -1,15 +1,34 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function ClientInformationForm(){
+    const [clientName, setClientName] = useState({name:"", cpf: ""})
+
+    function formInformation(event) {
+        setClientName({...clientName, [event.target.name]: event.target.value})
+    }
+
     return(
         <Client>
             <ClientInfo>
                 <p>Nome do Comprador:</p>
-                <input placeholder="Digite seu nome..."/>
+                <input 
+                name="name"
+                type="text"
+                placeholder="Digite seu nome..."
+                value={clientName.name}
+                onChange={formInformation}
+                />
             </ClientInfo>
             <ClientInfo>
                 <p>CPF do Comprador:</p>
-                <input placeholder="Digite seu cpf..."/>
+                <input 
+                name="cpf"
+                type="number"
+                placeholder="Digite seu cpf..."
+                value={clientName.cpf}
+                onChange={formInformation}
+                />
             </ClientInfo>
         </Client>
     )

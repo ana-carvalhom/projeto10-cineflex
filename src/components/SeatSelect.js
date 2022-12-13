@@ -60,8 +60,7 @@ export default function SeatSelect(){
         return <TitleContainer>Carregando...</TitleContainer>
     }
 
-//parei aqui - vou precisar transformar o P num componente separado//
-    return (
+   return (
 <SeatSelectContent> 
 <TitleContainer>
             <h2>Selecione o(s) assento(s)</h2>
