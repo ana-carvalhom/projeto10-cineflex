@@ -8,21 +8,23 @@ export default function ClientInformationForm({seatSelected}){
     const navigate = useNavigate()
 
     function formInformation(event) {
-        setClientName({...clientName, [event.target.name]: event.target.value})
+        const {name, value} = event.target
+        setClientName({...clientName, [name]: value})
     }
 
     function ticketPurchase(event){
         event.preventDefault()
+
             const body = {
                 ids: seatSelected.map(seat => seat.id),
                 ...clientName
             }
         
+            console.log(body)
+
            const promise =  axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", body)
-           promise.then(ans => {
-            navigate("/sucesso")
-           })
-           promise.catch(err => console.log(err.response.data))
+           promise.then(ans => {navigate("/sucesso")})
+           promise.catch(err => alert(err.response.data))
     }
 
     return(
@@ -47,6 +49,9 @@ export default function ClientInformationForm({seatSelected}){
                 onChange={formInformation}
                 />
             </ClientInfo>
+            <Confirm>
+            <button type="submit">Reservar assento(s)</button>
+            </Confirm>
         </Client>
     )
 }
@@ -78,4 +83,26 @@ box-sizing: border-box;
 `
 const ClientInfo = styled.div`
 @media (max-width: 768px){}
+`
+
+const Confirm = styled.div`
+@media (max-width: 768px){
+display: flex;
+justify-content: center ;
+margin: 40px;
+button{
+width: 225px;
+height: 42px;
+background: #E8833A;
+border-radius: 3px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+color: white;
+
+}
+
+}
 `
