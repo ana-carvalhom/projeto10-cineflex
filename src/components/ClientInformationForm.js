@@ -1,15 +1,32 @@
 import styled from "styled-components";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function ClientInformationForm(){
+export default function ClientInformationForm({seatSelected}){
     const [clientName, setClientName] = useState({name:"", cpf: ""})
+    const navigate = useNavigate()
 
     function formInformation(event) {
         setClientName({...clientName, [event.target.name]: event.target.value})
     }
 
+    function ticketPurchase(event){
+        event.preventDefault()
+            const body = {
+                ids: seatSelected.map(seat => seat.id),
+                ...clientName
+            }
+        
+           const promise =  axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", body)
+           promise.then(ans => {
+            navigate("/sucesso")
+           })
+           promise.catch(err => console.log(err.response.data))
+    }
+
     return(
-        <Client>
+        <Client onSubmit={ticketPurchase}>
             <ClientInfo>
                 <p>Nome do Comprador:</p>
                 <input 
@@ -34,7 +51,7 @@ export default function ClientInformationForm(){
     )
 }
 
-const Client = styled.div`
+const Client = styled.form`
 @media (max-width: 768px){
 display: flex;
 flex-direction: column;
