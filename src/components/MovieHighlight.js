@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export default function MovieHighlight({movieCover, movieTitle, movieDay, movieHour}){
     return(
-        <MovieSelected>
+        <MovieSelected data-test="footer">
                 <MovieCard>
                 <MovieImage src={movieCover} alt="movie cover"/>
                 </MovieCard>

@@ -25,8 +25,8 @@ if (!movies){
         </TitleContainer>
         <MovieOptions>
             {movies.map(movie => (
-                <Link key={movie.id} to={`/sessoes/${movie.id}`}>
-                <Movies  posterURL={movie.posterURL} data-test="movie"/>
+                <Link key={movie.id} to={`/sessoes/${movie.id}`} data-test="movie">
+                <Movies  posterURL={movie.posterURL}/>
                               
                 </Link>
             ))}

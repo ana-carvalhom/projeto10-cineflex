@@ -6,10 +6,10 @@ export default function MovieDays({movie}){
 return (
     <TimeContainer data-test="movie-day">
     <p>{movie.weekday} - {movie.date}</p>
-       <ButtonsContainer data-test="showtime"> 
+       <ButtonsContainer> 
          {movie.showtimes.map((time) =>
          <Link key={time.name} to={`/assentos/${time.id}`}>
-         <button>{time.name}</button>
+         <button data-test="showtime">{time.name}</button>
          </Link>
          
                  

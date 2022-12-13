@@ -72,7 +72,7 @@ export default function SeatSelect({setTicketConfirmation}){
             seat={seat} 
             selectSeat={selectSeat}
             isSelected={seatSelected.some(s => seat.id === s.id )}
-           />
+            data-test="seat"/>
             ))
             
             }

@@ -18,7 +18,7 @@ export default function Seat({seat,selectSeat,isSelected  }){
 
 
     return(
-        <IndividualSeat data-test="seat" status={status} onClick={() => selectSeat(seat)}>{seat.name}</IndividualSeat>
+        <IndividualSeat status={status} onClick={() => selectSeat(seat)}>{seat.name}</IndividualSeat>
     )
 }
 
